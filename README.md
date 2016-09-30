@@ -1,1 +1,1 @@
-# wadoo_mobile
+# Wadoo, the mobile application
