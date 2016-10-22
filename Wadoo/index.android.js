@@ -1,32 +1,30 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
+
+import {LOGIN, renderLogin} from './scenes/login.js'
+
+function renderScene(route, navigator){
+	console.log(route)
+	switch(route.name){
+		case LOGIN: {
+			return renderLogin(navigator)
+		}
+	}
+}
 
 class Wadoo extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Navigator
+        initialRoute={{ name: LOGIN, index: 0 }}
+        renderScene={renderScene}
+      />
     );
   }
 }
@@ -36,7 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#666666',
   },
   welcome: {
     fontSize: 20,
