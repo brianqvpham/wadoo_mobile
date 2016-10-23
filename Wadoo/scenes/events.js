@@ -5,17 +5,22 @@ import {
   View
 } from 'react-native';
 
-import {getEvents} from '../redux/reducer';
+import {SetEvents} from '../redux/store';
+import EVENTS from '../debug/events'
+import 
 
 export const EVENT = "EVENT"
 
 export function renderEvent(navigator){
-	console.log("RenderEvent")
-  getEvents();
+  console.log("RenderEvent")
+  SetEvents(JSON.parse(EVENTS));
 	return(
 		<View style={styles.container}>
 			<Text>This is the events page</Text>
 		</View>
+		<ListView
+			dataSource={GetState().eventsDS}
+		/>
 	)
 }
 
