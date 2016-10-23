@@ -5,64 +5,18 @@ import {
   View
 } from 'react-native';
 
-import Button from 'react-native-button'
-import {FBLogin, FBLoginManager} from 'react-native-facebook-login'
-import EditText from '../components/edit-text'
+import {getEvents} from '../redux/reducer';
 
-export const LOGIN = "LOGIN"
+export const EVENT = "EVENT"
 
-import {SetUser} from '../redux/store'
-
-
-
-export function renderLogin(navigator){
-	console.log("RenderLogin")
+export function renderEvent(navigator){
+	console.log("RenderEvent")
+  getEvents();
 	return(
-		<Login />
+		<View style={styles.container}>
+			<Text>This is the events page</Text>
+		</View>
 	)
-}
-
-class Login extends Component{
-  render() {
-    return(
-	  <View style={styles.container}>
-		<FBLogin style={{ marginBottom: 10, }}
-        ref={(fbLogin) => { this.fbLogin = fbLogin }}
-        permissions={["email","user_friends"]}
-        loginBehavior={FBLoginManager.LoginBehaviors.Native}
-        onLogin={function(data){
-          console.log("Logged in!");
-          console.log(data);
-          SetUser({data.credentials });
-        }}
-        onLogout={function(){
-          console.log("Logged out.");
-          SetUser({null });
-        }}
-        onLoginFound={function(data){
-          console.log("Existing login found.");
-          console.log(data);
-          SetUser({data.credentials });
-        }}
-        onLoginNotFound={function(){
-          console.log("No user logged in.");
-          SetUser({null });
-        }}
-        onError={function(data){
-          console.log("ERROR");
-          console.log(data);
-        }}
-        onCancel={function(){
-          console.log("User cancelled.");
-        }}
-        onPermissionsMissing={function(data){
-          console.log("Check permissions!");
-          console.log(data);
-        }}
-      />
-	  </View>
-	)
-  }
 }
 
 const styles = StyleSheet.create({
@@ -70,16 +24,9 @@ const styles = StyleSheet.create({
 		flex:1,
 		alignItems: 'center',
 		justifyContent:'center',
-		backgroundColor:'#e1c18f',
+		backgroundColor:'#cc6600',
 	},
 	textStyle: {
 		color:"#cc6600"
-	},
-	editContainer:{
-		width:360,
-		backgroundColor:"#ff66ff",
-	},
-	editText: {
-		color:'#009900',
 	}
 })
