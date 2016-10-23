@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 
 import {reducer} from './reducer'
 import {setEvents, setUser, setFriends} from './actions'
-import * as firebase from 'firebase';
+/*import * as firebase from 'firebase';
 
 // Setup firebase
 const firebaseConfig = {
@@ -12,7 +12,7 @@ const firebaseConfig = {
     storageBucket: "gs://wadoo-1f5be.appspot.com",
 }
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-
+*/
 const store = createStore(reducer);
 store.subscribe(() => {
 	console.log(GetState())
@@ -29,7 +29,7 @@ export function SetEvents(events){
 export function SetUser(user){
 	store.dispatch(setUser(user));
 }
-
+/*
 // Checks snapshot when once is triggered if user already exists in DB
 // Adds user to DB if does not exist
 export function insertUserIntoDB() {
@@ -53,7 +53,7 @@ export function getEvents() {
                 SetEvents(event_ids);
     });
 }
-
+*/
 export function SetFriends(friends){
 	store.dispatch(setFriends(friends))
 }

@@ -5,7 +5,7 @@ import {
   View,
   ListView
 } from 'react-native';
-import {SetEvents, GetState, getEvents, SetUser} from '../redux/store';
+import {SetEvents, GetState, SetUser} from '../redux/store';
 import {EVENTSJSON} from '../debug/constants'
 
 export const EVENTS = 'EVENTS'
@@ -13,8 +13,8 @@ export const EVENTS = 'EVENTS'
 export function renderEvents(navigator){
   console.log("RenderEvent")
   console.log(EVENTSJSON)
-	SetUser(24)
-  /*SetEvents([{id: 0, 
+  SetUser(24)
+  SetEvents([{id: 0, 
               name: "The Incredibles 2 Premiere", 
 			  desc: "The premiere of Pixar\'s The Incredibles 2", 
 			  date: "June 21, 2019",
@@ -23,8 +23,7 @@ export function renderEvents(navigator){
 			   name: "Halal Bros",
 			   date: "Always",
 			   desc: "Middle Eastern fare, from kebabs to stuffed pitas, in a bright cafe with seats & a take-out counter.",
-			   location: "2712 Guadalupe St, Austin, TX 78705"}]) */
-	getEvents()
+			   location: "2712 Guadalupe St, Austin, TX 78705"}])
 	return(
 		<ListView
 			dataSource={GetState().eventsDS}
