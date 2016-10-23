@@ -9,8 +9,10 @@ import {Alert} from 'react-native';
 var client = WindowsAzure.MobileServiceClient("wadoo-mobile.azurewebsites.net");
 
 // Create reference to tables
+var user_table = client.getTable("User");
 var event_table = client.getTable("Event");
 var user_event_table = client.getTable("User_Event");
+var friend_table = client.getTable("Friend");
 
 const store = createStore(reducer);
 
@@ -24,6 +26,28 @@ export function SetEvents(events){
 
 export function SetUser(user){
 	store.dispatch(setUser(user));
+}
+
+// Inserts new user if query for user is empty
+function insertNewUser(results) {
+	var numItemsRead = results.length
+	if (numItemsRead === 0) {
+		var newUser = {
+			id: GetState().user,
+			password: null,
+			username: null
+		};
+		user_table
+			.insert(newUser);
+	}
+}
+
+// Checks if new user
+export function checkNewUser() {
+	user_event_table
+		.where(user_id : GetState().user)
+		.read()
+		.then(insertNewUser);
 }
 
 // if SQL request fails
