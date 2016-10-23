@@ -32,24 +32,47 @@ function failure(error) {
   Alert.alert('Unable to get events.');
 }
 
-// Stores the events
-function storeEvents(results) {
-	SetEvents(results);
+
+
+export function getEvents() {
+  return new Promise((resolve, reject) => {
+	queryEvents()
+		.then(queryEventIDS)
+			.then((result) => {
+				setEvents(result)
+				resolve()
+			})
+		.catch(reject)
+	.catch(reject)
+  }
+}
+
+// Query for event ids tied to user
+function queryEvents(){
+  return new Promise((resolve, reject) => {
+	user_event_table.select('event_id')
+      .where({user_id : GetState().user})
+      .read()
+      .then(resolve)
+	  .catch(reject);
+  })
 }
 
 // Uses event ids to query for events
-fuction getEventIDS(results) {
+fuction queryEventIDS(results) {
+  return new Promise((resolve, reject) {
   event_table
+		.where((id) => {
+			for(var i = 0; i < results.length; i++){
+				if(results[i] == id)
+					return true
+			}
+			return false;
+		})
 		.orderBy('date')
-    .read()
-    .then(storeEvents, failure);
+		.read()
+		.then(storeEvents, failure);
+  }
 }
 
 
-function getEvents() {
-  // Query for event ids tied to user
-  user_event_table.select('event_id')
-    .where({user_id : GetState().user})
-    .read()
-    .then(getEventIDS, failure);
-}
