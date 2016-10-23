@@ -11,6 +11,7 @@ export function reducer(state = initialState, action = {}) {
       return Object.assign({}, state, {events: action.events})
 	}
 	  case SETUSER: {
+      consol.log(action.user)
 	  return Object.assign({}, state,{user: action.user})
 	}
     default:
