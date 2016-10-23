@@ -31,23 +31,23 @@ class Login extends Component{
         permissions={["email","user_friends"]}
         loginBehavior={FBLoginManager.LoginBehaviors.Native}
         onLogin={function(data){
-          console.log("Logged in!");
-          console.log(data);
-          SetUser({data.credentials })
-          checkNewUser();
+          console.log("Logged in!")
+          console.log(data)
+		  SetUser(data.credentials)
+          checkNewUser()
         }}
         onLogout={function(){
           console.log("Logged out.");
-          SetUser({null });
+          SetUser(null);
         }}
         onLoginFound={function(data){
           console.log("Existing login found.");
           console.log(data);
-          SetUser({data.credentials });
+          SetUser(data.credentials);
         }}
         onLoginNotFound={function(){
           console.log("No user logged in.");
-          SetUser({null });
+          SetUser(null);
         }}
         onError={function(data){
           console.log("ERROR");
