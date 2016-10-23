@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "azure-mobile-apps-client": "^2.0.0-rc1",
+    "firebase": "^3.5.1",
     "react": "15.3.2",
     "react-native": "0.34.1",
     "react-native-button": "^1.7.1",

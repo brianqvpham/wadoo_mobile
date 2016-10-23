@@ -9,6 +9,7 @@ import {
 
 import {LOGIN, renderLogin} from './scenes/login.js'
 
+
 function renderScene(route, navigator){
 	console.log(route)
 	switch(route.name){
