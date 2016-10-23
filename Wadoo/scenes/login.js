@@ -11,6 +11,8 @@ import EditText from '../components/edit-text'
 
 export const LOGIN = "LOGIN"
 
+import {SetUser} from '../redux/store'
+
 
 
 export function renderLogin(navigator){
@@ -21,11 +23,6 @@ export function renderLogin(navigator){
 }
 
 class Login extends Component{
-  constructor(props) {
-    super(props);
-    this.state = { username: "", password: ""};
-  }
-  
   render() {
     return(
 	  <View style={styles.container}>
@@ -36,20 +33,20 @@ class Login extends Component{
         onLogin={function(data){
           console.log("Logged in!");
           console.log(data);
-          _this.setState({ user : data.credentials });
+          SetUser({ user : data.credentials });
         }}
         onLogout={function(){
           console.log("Logged out.");
-          _this.setState({ user : null });
+          SetUser({ user : null });
         }}
         onLoginFound={function(data){
           console.log("Existing login found.");
           console.log(data);
-          _this.setState({ user : data.credentials });
+          SetUser({ user : data.credentials });
         }}
         onLoginNotFound={function(){
           console.log("No user logged in.");
-          _this.setState({ user : null });
+          SetUser({ user : null });
         }}
         onError={function(data){
           console.log("ERROR");
