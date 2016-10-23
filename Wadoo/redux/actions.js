@@ -1,5 +1,7 @@
 export const SETEVENTS = 'SETEVENTS'
 export const SETUSER = 'SETUSER'
+export const SETFRIENDS = 'SETFRIENDS'
+
 export function setEvents(events) {
   return {
     type: SETEVENTS,
@@ -12,4 +14,11 @@ export function setUser(user) {
     type: SETUSER,
 	user: user
   };
+}
+
+export function setFriends(friends){
+	return {
+		type: SETFRIENDS,
+		friends: friends
+	}
 }

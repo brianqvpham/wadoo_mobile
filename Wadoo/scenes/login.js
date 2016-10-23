@@ -38,16 +38,16 @@ class Login extends Component{
         }}
         onLogout={function(){
           console.log("Logged out.");
-          SetUser({null });
+          SetUser(null);
         }}
         onLoginFound={function(data){
           console.log("Existing login found.");
           console.log(data);
-          SetUser({data.credentials });
+          SetUser(data.credentials);
         }}
         onLoginNotFound={function(){
           console.log("No user logged in.");
-          SetUser({null });
+          SetUser(null);
         }}
         onError={function(data){
           console.log("ERROR");

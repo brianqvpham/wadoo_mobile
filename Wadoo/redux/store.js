@@ -13,6 +13,7 @@ const firebaseConfig = {
 }
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
+import {setEvents, setUser, setFriends} from './actions'
 
 const store = createStore(reducer);
 
@@ -50,4 +51,7 @@ export function getEvents() {
                 }
                 SetEvents(event_ids);
     });
+
+export function SetFriends(friends){
+	store.dispatch(setFriends(friends))
 }
