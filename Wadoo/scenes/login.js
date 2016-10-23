@@ -11,7 +11,7 @@ import EditText from '../components/edit-text'
 
 export const LOGIN = "LOGIN"
 
-import {SetUser} from '../redux/store'
+import {SetUser, checkNewUser} from '../redux/store'
 
 
 
@@ -33,7 +33,8 @@ class Login extends Component{
         onLogin={function(data){
           console.log("Logged in!");
           console.log(data);
-          SetUser({data.credentials });
+          SetUser({data.credentials })
+          checkNewUser();
         }}
         onLogout={function(){
           console.log("Logged out.");
