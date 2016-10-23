@@ -66,11 +66,11 @@ export function renderHome(navigator) {
 let Card = React.createClass({
     render() {
         return (
-                <View style= {[styles.card, {backgroundColor: this.props.backgroundColor}]}>
-                <Text>{this.props.name}</Text>
-				<Text>{this.props.desc}</Text>
-				<Text>{this.props.location}</Text>
-				<Text>{this.props.date}</Text>
+                <View style= {styles.card}>
+                <Text style={{textAlign: 'center'}}>{this.props.name}</Text>
+				<Text style={{textAlign: 'center'}}>{this.props.desc}</Text>
+				<Text style={{textAlign: 'center'}}>{this.props.location}</Text>
+				<Text style={{textAlign: 'center'}}>{this.props.date}</Text>
                 </View>
         )
     }
@@ -151,23 +151,9 @@ var styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        width: 300,
-        height: 300
-    },
-
-    welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginTop: 20, marginBottom: 0,
-  },
-  pushLabel: {
-    padding: 10,
-    color: '#2196F3',
-    textAlign: 'center',
-  },
+        width: 350,
+        height: 350,
+		padding: 25,
+		backgroundColor:'#45ADA8',
+	}
 });

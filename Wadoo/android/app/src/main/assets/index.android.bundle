@@ -1523,30 +1523,29 @@ return(0,_friend.renderFriend)(navigator,route.friend,route.events);
 Wadoo=function(_Component){babelHelpers.inherits(Wadoo,_Component);function Wadoo(){babelHelpers.classCallCheck(this,Wadoo);return babelHelpers.possibleConstructorReturn(this,(Wadoo.__proto__||Object.getPrototypeOf(Wadoo)).apply(this,arguments));}babelHelpers.createClass(Wadoo,[{key:'render',value:function render()
 {
 return(
+_react2.default.createElement(_reactNative.View,{style:{flex:1}},
 _react2.default.createElement(_reactNative.Navigator,{
 initialRoute:{name:_login.LOGIN,index:0},
-renderScene:renderScene}));
+renderScene:renderScene}),
+
+_react2.default.createElement(_reactNative.View,{style:styles.logoContainer},
+_react2.default.createElement(_reactNative.Text,{style:styles.logo},'Wadoo'))));
+
+
 
 
 }}]);return Wadoo;}(_react.Component);
 
 
 var styles=_reactNative.StyleSheet.create({
-container:{
-flex:1,
-justifyContent:'center',
+logo:{
+fontSize:30,
+textAlign:'center',
+color:'#45ADA8'},
+
+logoContainer:{
 alignItems:'center',
-backgroundColor:'#666666'},
-
-welcome:{
-fontSize:20,
-textAlign:'center',
-margin:10},
-
-instructions:{
-textAlign:'center',
-color:'#333333',
-marginBottom:5}});
+backgroundColor:'#594f4f'}});
 
 
 
@@ -81970,11 +81969,11 @@ _react2.default.createElement(CardsSwipe,null)));
 var Card=_react2.default.createClass({displayName:'Card',
 render:function render(){
 return(
-_react2.default.createElement(_reactNative.View,{style:[styles.card,{backgroundColor:this.props.backgroundColor}]},
-_react2.default.createElement(_reactNative.Text,null,this.props.name),
-_react2.default.createElement(_reactNative.Text,null,this.props.desc),
-_react2.default.createElement(_reactNative.Text,null,this.props.location),
-_react2.default.createElement(_reactNative.Text,null,this.props.date)));
+_react2.default.createElement(_reactNative.View,{style:styles.card},
+_react2.default.createElement(_reactNative.Text,{style:{textAlign:'center'}},this.props.name),
+_react2.default.createElement(_reactNative.Text,{style:{textAlign:'center'}},this.props.desc),
+_react2.default.createElement(_reactNative.Text,{style:{textAlign:'center'}},this.props.location),
+_react2.default.createElement(_reactNative.Text,{style:{textAlign:'center'}},this.props.date)));
 
 
 }});
@@ -82055,24 +82054,10 @@ card:{
 flex:1,
 justifyContent:'center',
 alignItems:'center',
-width:300,
-height:300},
-
-
-welcome:{
-fontSize:20,
-textAlign:'center',
-margin:10},
-
-instructions:{
-textAlign:'center',
-color:'#333333',
-marginTop:20,marginBottom:0},
-
-pushLabel:{
-padding:10,
-color:'#2196F3',
-textAlign:'center'}});
+width:350,
+height:350,
+padding:25,
+backgroundColor:'#45ADA8'}});
 }, "Wadoo/scenes/home.js");
 __d(657 /* react-native-material-kit/lib/index.js */, function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.MKCheckbox=exports.MKRadioButton=exports.MKSpinner=exports.MKRangeSlider=exports.MKSlider=exports.MKProgress=exports.MKRipple=exports.MKIconToggle=exports.MKSwitch=exports.MKTextField=exports.MKButton=exports.MKColor=exports.mdl=exports.theme=exports.getTheme=exports.setTheme=undefined;var _theme=require(658 /* ./theme */);Object.defineProperty(exports,'setTheme',{enumerable:true,get:function get(){return _theme.
 

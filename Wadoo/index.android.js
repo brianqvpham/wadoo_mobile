@@ -37,31 +37,30 @@ function renderScene(route, navigator){
 class Wadoo extends Component {
   render() {
     return ( 
-      <Navigator
+		<View style={{flex:1}}>
+		<Navigator
         initialRoute={{ name: LOGIN, index: 0 }}
         renderScene={renderScene}
-      />
+		/>
+		<View style={styles.logoContainer}>
+			<Text style={styles.logo}>Wadoo</Text>
+		</View>
+	  </View>
+	  
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#666666',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    logo:{
+		fontSize: 30,
+		textAlign: 'center',
+		color: '#45ADA8'
+	},
+	logoContainer: {
+		alignItems:'center',
+		backgroundColor:'#594f4f'
+	}
 });
 
 AppRegistry.registerComponent('Wadoo', () => Wadoo);
