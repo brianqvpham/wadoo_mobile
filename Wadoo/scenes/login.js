@@ -33,7 +33,7 @@ class Login extends Component{
         onLogin={function(data){
           console.log("Logged in!");
           console.log(data);
-          SetUser({data.credentials })
+          SetUser(data.credentials)
           insertUserIntoDB();
         }}
         onLogout={function(){

@@ -9,6 +9,7 @@ import {
 
 import {LOGIN, renderLogin} from './scenes/login.js'
 import {EVENTS, renderEvents} from './scenes/events.js'
+import {FRIENDS, renderFriends} from './scenes/friends.js'
 
 
 function renderScene(route, navigator){
@@ -19,6 +20,9 @@ function renderScene(route, navigator){
 		}
 		case EVENTS: {
 			return renderEvents(navigator)
+		}
+		case FRIENDS: {
+			return renderFriends(navigator)
 		}
 	}
 }
