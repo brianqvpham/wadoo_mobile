@@ -33,7 +33,6 @@ function failure(error) {
 }
 
 
-
 export function getEvents() {
   return new Promise((resolve, reject) => {
 	queryEvents()

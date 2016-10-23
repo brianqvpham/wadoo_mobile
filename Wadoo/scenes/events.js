@@ -7,21 +7,21 @@ import {
 
 import {SetEvents} from '../redux/store';
 import EVENTS from '../debug/events'
-import 
+import {getEvents} from '../redux/reducer';
 
 export const EVENT = "EVENT"
 
 export function renderEvent(navigator){
+
   console.log("RenderEvent")
   SetEvents(JSON.parse(EVENTS));
+  render(){
 	return(
-		<View style={styles.container}>
-			<Text>This is the events page</Text>
-		</View>
 		<ListView
 			dataSource={GetState().eventsDS}
 		/>
 	)
+  }
 }
 
 const styles = StyleSheet.create({
