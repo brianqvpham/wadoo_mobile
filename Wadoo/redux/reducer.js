@@ -10,7 +10,7 @@ export function reducer(state = initialState, action = {}) {
     case SETEVENTS:{
       return Object.assign({}, state, {events: action.events})
 	}
-	case SETEVENTS: {
+	  case SETUSER: {
 	  return Object.assign({}, state,{user: action.user})
 	}
     default:

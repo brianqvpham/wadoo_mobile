@@ -33,20 +33,20 @@ class Login extends Component{
         onLogin={function(data){
           console.log("Logged in!");
           console.log(data);
-          SetUser({ user : data.credentials });
+          SetUser({data.credentials });
         }}
         onLogout={function(){
           console.log("Logged out.");
-          SetUser({ user : null });
+          SetUser({null });
         }}
         onLoginFound={function(data){
           console.log("Existing login found.");
           console.log(data);
-          SetUser({ user : data.credentials });
+          SetUser({data.credentials });
         }}
         onLoginNotFound={function(){
           console.log("No user logged in.");
-          SetUser({ user : null });
+          SetUser({null });
         }}
         onError={function(data){
           console.log("ERROR");
