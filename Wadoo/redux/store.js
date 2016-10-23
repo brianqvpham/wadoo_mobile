@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 
 import {reducer} from './reducer'
-import {setEvents, setUser, setFriends} from './actions'
+import {setEvents, setUser, setFriends, addEvent} from './actions'
 /*import * as firebase from 'firebase';
 
 // Setup firebase
@@ -28,6 +28,10 @@ export function SetEvents(events){
 
 export function SetUser(user){
 	store.dispatch(setUser(user));
+}
+
+export function AddEvent(event){
+	store.dispatch(addEvent(event))
 }
 /*
 // Checks snapshot when once is triggered if user already exists in DB

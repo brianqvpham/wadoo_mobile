@@ -1,11 +1,10 @@
-import {SETEVENTS, SETUSER, SETFRIENDS} from './actions'
+import {SETEVENTS, SETUSER, SETFRIENDS, ADDEVENT} from './actions'
 import {ListView} from 'react-native'
 
 const initialState = {
-  events: null,
+  events: [],
   user: null,
-  friends: null,
-  events: null,
+  friends: [],
   friendsDS: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}).cloneWithRows([]),
   eventsDS: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}).cloneWithRows([])
 };
@@ -24,6 +23,12 @@ export function reducer(state = initialState, action = {}) {
 	  const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
       var dataSource = ds.cloneWithRows(action.friends);
       return Object.assign({}, state, {friends: action.friends, friendsDS: dataSource})
+	}
+	case ADDEVENT: {
+		var events = [...state.events, action.event]
+		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+		var dataSource = ds.cloneWithRows(events);
+		return Object.assign({}, state, {events: events, eventsDS: dataSource})
 	}
     default:
       return state;

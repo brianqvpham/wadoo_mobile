@@ -10,7 +10,8 @@ import {
 import {LOGIN, renderLogin} from './scenes/login.js'
 import {EVENTS, renderEvents} from './scenes/events.js'
 import {FRIENDS, renderFriends} from './scenes/friends.js'
-
+import {HOME, renderHome} from './scenes/home'
+import {FRIEND, renderFriend} from './scenes/friend'
 
 function renderScene(route, navigator){
 	console.log(route)
@@ -24,14 +25,20 @@ function renderScene(route, navigator){
 		case FRIENDS: {
 			return renderFriends(navigator)
 		}
+		case HOME: {
+			return renderHome(navigator)
+		}
+		case FRIEND : {
+			return renderFriend(navigator, route.friend, route.events)
+		}
 	}
 }
 
 class Wadoo extends Component {
   render() {
-    return (
+    return ( 
       <Navigator
-        initialRoute={{ name: EVENTS, index: 0 }}
+        initialRoute={{ name: LOGIN, index: 0 }}
         renderScene={renderScene}
       />
     );

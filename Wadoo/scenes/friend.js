@@ -3,8 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  ListView,
-  TouchableHighlight
+  ListView
 } from 'react-native';
 
 import {SetFriends, SetEvents, GetState} from '../redux/store';
@@ -12,9 +11,8 @@ import {EVENTSJSON} from '../debug/constants'
 import {getEvents} from '../redux/reducer';
 import Button from 'react-native-button'
 import {EVENTS} from './events'
-import {FRIEND} from './friend'
 
-export const FRIENDS = 'FRIENDS'
+export const FRIEND = 'FRIEND'
 
 var mutualEvents = (events, user) => {
 	result = [];
@@ -29,59 +27,42 @@ var mutualEvents = (events, user) => {
 	return result
 }
 
-export function renderFriends(navigator){
+export function renderFriend(navigator, friend, events){
   console.log("RenderFriends")
-  SetFriends([{id: 0, 
-              name: "Jaime Munoz", 
-			  events: [0, 1]
-			 },
-			  {id: 1,
-			   name: "Brian Pham",
-			   events: [1]
-			  }])
+	var DataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}).cloneWithRows(events)
 	return(
 	<View style={styles.container}>
-	<View style={styles.buttonRow}>
+		<View style={styles.buttonRow}>
 			<Button 
 				containerStyle={styles.buttonContainer}
 				style={styles.buttontext}
 				onPress={() => {
 					navigator.pop()
 				}}>
-				Swipe
+				Back
 			</Button>
-			<Button 
-				containerStyle={styles.buttonContainer}
-				style={styles.buttontext}
-				onPress={() => {
-					navigator.replace({name: EVENTS})
-				}}>
-				Events
-			</Button>
-			<Button 
-				containerStyle={[styles.buttonContainer, {backgroundColor: '#9DE0AD'}]}
-				style={styles.buttontext}>
-				Friends
-			</Button>
-			</View>
-		<ListView
-			dataSource={GetState().friendsDS}
-			renderRow={(rowData) => <TouchableHighlight 
-							style={styles.listItem}
-							onPress={()=> {
-								navigator.push({name: FRIEND, friend: rowData, events: mutualEvents(GetState().events, rowData)})
-							}}>
-							<View>
-					<Text>
-					Name: {rowData.name}
-					</Text>
-					<Text>
-					Mutual Events: {mutualEvents(GetState().events, rowData).length}
-					</Text>
-					</View>
-				</TouchableHighlight>}
-		/>
 		</View>
+		<View>
+			<Text>{friend.name}</Text>
+		</View>
+		<ListView
+			dataSource={DataSource}
+				renderRow={(rowData) => <View style={styles.listItem}>
+					<Text>
+					Event Name: {rowData.name}
+					</Text>
+					<Text>
+					Description: {rowData.desc}
+					</Text>
+					<Text>
+					When: {rowData.date}
+					</Text>
+					<Text>
+					Location: {rowData.location}
+					</Text>
+					</View>}
+		/>
+	</View>
 	)
 }
 
