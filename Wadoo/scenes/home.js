@@ -104,7 +104,7 @@ var CardsSwipe =  React.createClass({
     render() {
         return (
             <SwipeCards
-            cards = {this.state.cards}
+            cards = {GetState().needVotes}
 
             renderCard={(cardData) => <Card {...cardData} />}
             renderNoMoreCards={() => <NoMoreCards />}

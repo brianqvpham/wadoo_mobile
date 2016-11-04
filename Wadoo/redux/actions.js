@@ -1,20 +1,32 @@
 export const SETEVENTS = 'SETEVENTS'
 export const SETUSER = 'SETUSER'
 export const SETFRIENDS = 'SETFRIENDS'
-export const ADDEVENT = 'ADDEVENT'
+export const CONFIRMEVENT = 'CONFIRMEVENT'
+export const PASSEVENT = 'PASSEVENT'
 
-export function setEvents(events) {
+export function setEvents(pendingEvents, confirmedEvents, passedEvents) {
   return {
     type: SETEVENTS,
-	events: events
-  };
+    pendingEvents: pendingEvents,
+    confirmedEvents: confirmedEvents,
+    passedEvents: passedEvents
+  }
 }
 
-export function addEvent(event){
+// Called when a user says yes to an event
+export function confirmEvent(id){
+  return {
+    type: CONFIRMEVENT,
+    id: id
+  }
+}
+
+// Called when a user says no to an event
+export function passEvent(id){
 	return {
-		type: ADDEVENT,
-		event: event
-	}
+		type: PASSEVENT,
+		id: id	
+  }
 }
 
 export function setUser(user) {

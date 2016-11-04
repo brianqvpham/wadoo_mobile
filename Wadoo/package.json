@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
   "dependencies": {
     "azure-mobile-apps-client": "^2.0.0-rc1",
@@ -16,5 +17,16 @@
     "react-native-swipe-cards": "0.0.9",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^16.0.0",
+    "babel-preset-react-native": "^1.9.0",
+    "jest": "^16.0.2",
+    "jest-cli": "^16.0.2",
+    "jest-react-native": "^16.0.0",
+    "react-test-renderer": "^15.3.2"
+  },
+  "jest": {
+    "preset": "jest-react-native"
   }
 }
