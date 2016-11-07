@@ -1,10 +1,10 @@
 import {GetState, SetUser, SetEvents, ConfirmEvent, PassEvent} from '../redux/store'
 import {eventFactory} from '../factories/event-factory'
-test('inital Store is initalized', () => {
+test('initial Store is initalized', () => {
   expect(GetState()).toBeDefined()
 })
 
-test('inital user to be null', () => {
+test('initial user to be null', () => {
   expect(GetState().user).toBeNull()
 })
 
@@ -20,8 +20,9 @@ test('inital ListView Data Store objects initalized', () => {
   expect(GetState().passedEventsDS).toBeDefined();
 })
 
-test('user added to store', () => {
+test('User added to store', () => {
   SetUser({id : 2})
+  
   expect(GetState().user).toEqual({id: 2})
 })
 
@@ -31,6 +32,7 @@ test('Events added to store',() => {
   passedEvents    = eventFactory(1)
   
   SetEvents(pendingEvents, confirmedEvents, passedEvents)
+  
   expect(GetState().pendingEvents.length).toEqual(5);
   expect(GetState().confirmedEvents.length).toEqual(2);
   expect(GetState().passedEvents.length).toEqual(1);
@@ -43,22 +45,26 @@ test('Confirm Event',() => {
   
   SetEvents(pendingEvents, confirmedEvents, passedEvents)
   ConfirmEvent(pendingEvents[0].id)
+  
   expect(GetState().pendingEvents.length).toEqual(4);
   expect(GetState().confirmedEvents.length).toEqual(3);
   expect(GetState().passedEvents.length).toEqual(1);
+  expect(GetState().pendingEvents).not.toContainEqual(pendingEvents[0])
   expect(GetState().confirmedEvents).toContainEqual(pendingEvents[0])
 })
 
-test('Pass Event',() => {
+test('Passed Event removed from pending',() => {
   pendingEvents   = eventFactory(5)
   confirmedEvents = eventFactory(2)
   passedEvents    = eventFactory(1)
   
   SetEvents(pendingEvents, confirmedEvents, passedEvents)
   PassEvent(pendingEvents[0].id)
+  
   expect(GetState().pendingEvents.length).toEqual(4);
   expect(GetState().confirmedEvents.length).toEqual(2);
   expect(GetState().passedEvents.length).toEqual(2);
+  expect(GetState().pendingEvents).not.toContainEqual(pendingEvents[0])
   expect(GetState().passedEvents).toContainEqual(pendingEvents[0])
 })
 /*

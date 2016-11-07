@@ -32,7 +32,7 @@ export function passEvent(id){
 export function setUser(user) {
   return {
     type: SETUSER,
-	user: user
+	  user: user
   };
 }
 
