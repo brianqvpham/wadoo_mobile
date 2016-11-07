@@ -15,7 +15,7 @@ export const EVENTS = 'EVENTS'
 export function renderEvents(navigator){
   console.log("RenderEvent")
 	return(	<View style={styles.container}>
-	<View style={styles.buttonRow}>
+	<View style={styles.buttonRow}> 
 			<Button 
 				containerStyle={styles.buttonContainer}
 				style={styles.buttontext}
